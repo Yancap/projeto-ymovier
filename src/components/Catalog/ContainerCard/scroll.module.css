@@ -1,0 +1,14 @@
+.scroll_card{
+    scroll-snap-type: x mandatory;
+}
+
+
+.scroll_card::-webkit-scrollbar {
+    height: 6px;
+    background: #1E1E1E;
+    border-radius: 1000px;
+}
+.scroll_card::-webkit-scrollbar-thumb {
+    background: #990100;
+    border-radius: 1000px;
+}
