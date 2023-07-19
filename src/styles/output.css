@@ -848,8 +848,16 @@ video {
   height: 100vh;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .max-h-\[35rem\] {
   max-height: 35rem;
+}
+
+.max-h-64 {
+  max-height: 16rem;
 }
 
 .min-h-\[calc\(100vh-5rem\)\] {
@@ -883,6 +891,10 @@ video {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .-translate-x-1\/2 {
@@ -964,6 +976,10 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .rounded {

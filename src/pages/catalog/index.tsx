@@ -3,8 +3,25 @@ import Image from 'next/image'
 import React, { MouseEvent } from 'react'
 import { Card } from '../../components/Card'
 import { Modal } from '@/components/Modal'
+import { GetStaticProps } from 'next'
+import { getPrismicClient } from '@/services/prismic'
+import { Simplify } from '@prismicio/client/dist/types/value/types'
+import { MoviesDocumentData } from '../../../prismicio-types'
+import { moveEmitHelpers } from 'typescript'
 
-export default function Catalog() {
+export interface NewMoviesDocumentData extends Omit<MoviesDocumentData, "gender" | "poster"> {
+  gender: string;
+  poster: {
+    url: string;
+    alt: string
+  }
+}
+
+interface CatalogProps{
+  movies: Simplify<NewMoviesDocumentData[]>;
+}
+
+export default function Catalog({movies}: CatalogProps) {
   
   return (
     <main className='min-h-[calc(100vh-5rem)] bg-catalog bg-cover bg-no-repeat'>
@@ -29,11 +46,10 @@ export default function Catalog() {
                 </form>
               </div>
               <ContainerCard>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {movies && movies.map(movie => (
+                  <Card movie={movie}/>
+                ))}
+                
               </ContainerCard>
             </div>
           </section>
@@ -47,15 +63,33 @@ export default function Catalog() {
             </h2>
           </div>
           <ContainerCard>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {movies && movies.map(movie => (
+              <Card movie={movie}/>
+            ))}
           </ContainerCard>
         </div>
       </section>
       {/* <Modal /> */}
     </main>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const response = await prismic.getAllByType('movies', {
+    fetch: [], 
+    pageSize: 100, 
+  })
+
+  const movies = response.map(movie => ({
+    slug: movie.uid, 
+    ...movie.data,
+    gender: (movie.data.gender.map(gen => gen.type)).join(", ")
+  }))
+  return {
+    props: {
+      movies
+    }
+  }
 }

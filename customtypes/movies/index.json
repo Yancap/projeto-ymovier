@@ -1,0 +1,117 @@
+{
+  "id": "movies",
+  "label": "movies",
+  "format": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "title": {
+        "type": "Text",
+        "config": { "label": "title", "placeholder": "" }
+      },
+      "plot": {
+        "type": "Text",
+        "config": { "label": "plot", "placeholder": "" }
+      },
+      "gender": {
+        "type": "Group",
+        "config": {
+          "label": "gender",
+          "fields": {
+            "type": {
+              "type": "Text",
+              "config": { "label": "type", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "review": {
+        "type": "Text",
+        "config": { "label": "review", "placeholder": "" }
+      },
+      "year": {
+        "type": "Number",
+        "config": { "label": "year", "placeholder": "" }
+      },
+      "poster": {
+        "type": "Image",
+        "config": { "label": "poster", "constraint": {}, "thumbnails": [] }
+      },
+      "background": {
+        "type": "Image",
+        "config": { "label": "background", "constraint": {}, "thumbnails": [] }
+      },
+      "main_color": {
+        "type": "Color",
+        "config": { "label": "main_color", "placeholder": "" }
+      },
+      "runtime": {
+        "type": "Number",
+        "config": { "label": "runtime", "placeholder": "" }
+      },
+      "parental_rating": {
+        "type": "Number",
+        "config": { "label": "parental_rating", "placeholder": "" }
+      },
+      "production": {
+        "type": "Group",
+        "config": {
+          "label": "production",
+          "fields": {
+            "name": {
+              "type": "Text",
+              "config": { "label": "name", "placeholder": "" }
+            },
+            "role": {
+              "type": "Text",
+              "config": { "label": "role", "placeholder": "" }
+            }
+          }
+        }
+      },
+      "trailer": {
+        "type": "Link",
+        "config": { "label": "trailer", "placeholder": "", "select": null }
+      },
+      "video": {
+        "type": "Embed",
+        "config": { "label": "video", "placeholder": "" }
+      },
+      "iframe": {
+        "type": "Text",
+        "config": { "label": "iframe", "placeholder": "" }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": { "choices": {} }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": { "height": 1260, "width": 2400 },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      }
+    }
+  }
+}
