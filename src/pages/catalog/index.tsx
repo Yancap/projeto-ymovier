@@ -1,6 +1,6 @@
 import { ContainerCard } from '@/components/Catalog/ContainerCard'
 import Image from 'next/image'
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, useState } from 'react'
 import { Card } from '../../components/Card'
 import { Modal } from '@/components/Modal'
 import { GetStaticProps } from 'next'
@@ -9,12 +9,13 @@ import { Simplify } from '@prismicio/client/dist/types/value/types'
 import { MoviesDocumentData } from '../../../prismicio-types'
 import { moveEmitHelpers } from 'typescript'
 
-export interface NewMoviesDocumentData extends Omit<MoviesDocumentData, "gender" | "poster"> {
+export interface NewMoviesDocumentData extends Omit<MoviesDocumentData, "gender" | "poster" | "runtime"> {
   gender: string;
   poster: {
     url: string;
     alt: string
   }
+  runtime: string;
 }
 
 interface CatalogProps{
@@ -22,7 +23,9 @@ interface CatalogProps{
 }
 
 export default function Catalog({movies}: CatalogProps) {
-  
+  const [ modal, setModal ] = useState(false)
+  const [ dataModal, setDataModal ] = useState<NewMoviesDocumentData | null>(null)
+
   return (
     <main className='min-h-[calc(100vh-5rem)] bg-catalog bg-cover bg-no-repeat'>
       <section className=' bg-gradient-to-t from-gray-800 via-gray-800/60 to-gray-900  backdrop-blur-sm'>
@@ -47,7 +50,7 @@ export default function Catalog({movies}: CatalogProps) {
               </div>
               <ContainerCard>
                 {movies && movies.map(movie => (
-                  <Card movie={movie}/>
+                  <Card movie={movie} setModal={setModal} setDataModal={setDataModal}/>
                 ))}
                 
               </ContainerCard>
@@ -64,12 +67,12 @@ export default function Catalog({movies}: CatalogProps) {
           </div>
           <ContainerCard>
             {movies && movies.map(movie => (
-              <Card movie={movie}/>
+              <Card movie={movie} setModal={setModal} setDataModal={setDataModal}/>
             ))}
           </ContainerCard>
         </div>
       </section>
-      {/* <Modal /> */}
+      {(modal && dataModal) && <Modal movie={dataModal} setModal={setModal}/> }
     </main>
   )
 }
@@ -85,7 +88,8 @@ export const getStaticProps: GetStaticProps = async () => {
   const movies = response.map(movie => ({
     slug: movie.uid, 
     ...movie.data,
-    gender: (movie.data.gender.map(gen => gen.type)).join(", ")
+    gender: (movie.data.gender.map(gen => gen.type)).join(", "),
+    runtime: movie.data.runtime ? ( `${Math.floor(movie.data.runtime / 60)}h ${movie.data.runtime - (60 * Math.floor(movie.data.runtime / 60))}min`) : 0
   }))
   return {
     props: {

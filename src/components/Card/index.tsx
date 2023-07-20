@@ -5,12 +5,20 @@ import Image from 'next/image';
 
 interface CardProps{
   movie: Simplify<NewMoviesDocumentData>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setDataModal: React.Dispatch<React.SetStateAction<NewMoviesDocumentData | null>>;
 }
 
 
-export const Card = ({movie}: CardProps) => {
+export const Card = ({movie, setModal, setDataModal}: CardProps) => {
+
+
   return (
-    <div className='card group [scroll-snap-align:center;] [scroll-snap-stop:always;]  hover:scale-105 hover:z-30 select-none'>
+    <div className='card group [scroll-snap-align:center;] [scroll-snap-stop:always;]  hover:scale-105 hover:z-30 select-none'
+    onClick={() => {
+      setModal(modal => !modal)
+      setDataModal(movie)
+      }}>
         <figure className='max-h-64 h-auto overflow-hidden'>
             <img src={movie.poster.url} alt={movie.poster.alt} className='max-w-full h-auto'/>
         </figure>
