@@ -46,4 +46,8 @@
     .card {
         @apply shrink-0 mt-4 xl:w-64 lg:w-52 relative cursor-pointer transition-all rounded-md overflow-hidden;
     }
+
+    .iframe {
+        @apply h-full w-full;
+    }
 }

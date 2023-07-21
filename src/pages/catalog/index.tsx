@@ -1,13 +1,12 @@
 import { ContainerCard } from '@/components/Catalog/ContainerCard'
 import Image from 'next/image'
-import React, { MouseEvent, useState } from 'react'
+import React, { useState } from 'react'
 import { Card } from '../../components/Card'
 import { Modal } from '@/components/Modal'
 import { GetStaticProps } from 'next'
 import { getPrismicClient } from '@/services/prismic'
 import { Simplify } from '@prismicio/client/dist/types/value/types'
 import { MoviesDocumentData } from '../../../prismicio-types'
-import { moveEmitHelpers } from 'typescript'
 
 export interface NewMoviesDocumentData extends Omit<MoviesDocumentData, "gender" | "poster" | "runtime"> {
   gender: string;
@@ -89,7 +88,13 @@ export const getStaticProps: GetStaticProps = async () => {
     slug: movie.uid, 
     ...movie.data,
     gender: (movie.data.gender.map(gen => gen.type)).join(", "),
-    runtime: movie.data.runtime ? ( `${Math.floor(movie.data.runtime / 60)}h ${movie.data.runtime - (60 * Math.floor(movie.data.runtime / 60))}min`) : 0
+    runtime: movie.data.runtime ? ( `${Math.floor(movie.data.runtime / 60)}h ${movie.data.runtime - (60 * Math.floor(movie.data.runtime / 60))}min`) : 0,
+    video: {
+      ...movie.data.video,
+      height: 'auto',
+      width: 'auto',
+      html: movie.data.video.html?.replace(/(?:width|height)="(\d+)"/g, "class=\"iframe\" ")
+    }
   }))
   return {
     props: {
