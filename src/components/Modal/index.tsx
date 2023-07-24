@@ -29,9 +29,8 @@ const Section = styled.section`
 
 export const Modal = ({movie, setModal}: ModalProps) => {
   const [ viewMovie, setViewMovie ] = useState(false)
-  console.log(movie.video);
   return (
-    <Section data-image={movie.background.url} className='h-screen w-screen backdrop-blur fixed top-0 left-0 z-50 flex items-center justify-center lg:pr-10 lg:pl-5'>
+    <Section data-image={movie.background.url} className='section-modal'>
         
         {viewMovie ? 
             <div className='h-full w-full py-2 px-8 relative'>

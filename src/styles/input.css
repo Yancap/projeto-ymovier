@@ -36,15 +36,19 @@
     }
 
     .container {
-        @apply mx-auto max-w-5xl xl:max-w-6xl lg:max-w-4xl md:max-w-xl max-w-lg;
+        @apply mx-auto xl:max-w-5xl lg:max-w-4xl md:max-w-xl max-w-lg;
     }
 
     .container-card{
-        @apply flex items-center gap-4 overflow-x-scroll pb-2 relative overflow-y-clip;
+        @apply flex items-center gap-4 overflow-x-scroll pb-2 relative overflow-y-clip w-full;
     }
 
     .card {
-        @apply shrink-0 mt-4 xl:w-64 lg:w-52 relative cursor-pointer transition-all rounded-md overflow-hidden;
+        @apply shrink-0 mt-4 xl:w-56 lg:w-48 relative cursor-pointer transition-all rounded-md overflow-hidden;
+    }
+    
+    .section-modal{
+        @apply h-screen w-screen backdrop-blur fixed top-0 left-0 z-50 flex items-center justify-center lg:pr-10 lg:pl-5;
     }
 
     .iframe {

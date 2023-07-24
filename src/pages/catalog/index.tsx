@@ -34,15 +34,15 @@ export default function Catalog({movies}: CatalogProps) {
               Catálogo
             </h1>
           </section>
-          <section className=" relative container pb-40 ">
+          <section className="relative container pb-40 ">
             <div className='-top-80 absolute z-10 container'>
-              <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-[3px]'>
+              <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
                 <h2 className='text-white font-medium text-2xl'>
                   Principais Filmes
                 </h2>
                 <form className='flex '>
-                  <input type="text" placeholder='Pesquisar' className='bg-transparent pb-2 transition-all border-b-gray-500 border-b-2 text-light-gray-300 outline-none  hover:placeholder:text-light-gray-300 focus:placeholder:text-light-gray-300 focus:border-b-light-gray-400'/>
-                  <button type="submit" className='bg-gray-400 p-2'>
+                  <input type="text" placeholder='Pesquisar' className='bg-transparent pb-1 transition-all border-b-gray-500 border-b-2 text-light-gray-300 outline-none  hover:placeholder:text-light-gray-300 focus:placeholder:text-light-gray-300 focus:border-b-light-gray-400'/>
+                  <button type="submit" className='bg-gray-400/20 py-1 px-2 rounded-r-full rounded-tl-full transition-all hover:bg-gray-400'>
                     <Image src='/search.svg' alt='search' height='15' width='15'/>
                   </button>
                 </form>
@@ -59,7 +59,7 @@ export default function Catalog({movies}: CatalogProps) {
       </section>
       <section className=' bg-gray-800 pb-20 pt-10'>
         <div className='container'>
-          <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-[3px]'>
+          <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
             <h2 className='text-white font-medium text-2xl'>
               Filmes de Ação
             </h2>
