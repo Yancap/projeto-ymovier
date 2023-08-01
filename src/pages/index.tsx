@@ -1,3 +1,4 @@
+import { SignatureButton } from '@/components/SignatureButton'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -22,10 +23,7 @@ export default function Home() {
                     Assista a qualquer filme, em qualquer lugar
                     por apenas <strong className='font-display text-red-500 font-bold'>R$ 19,99</strong> 
                   </h2>
-                  <button className='subscribe'>
-                    <Image src='/play.svg' alt='play' width='28' height='32' className='w-6 h-8'/>
-                    Assine agora
-                  </button>
+                  <SignatureButton />
               </div>
             </section>
           </div>

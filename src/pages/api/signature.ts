@@ -15,6 +15,8 @@ interface User {
 }
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
+    
+    
     if(request.method === "POST") {
         const session = await getServerSession(request, response, authOptions)
         
@@ -56,5 +58,9 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
             success_url: process.env.STRIPE_SUCCESS_URL as string,
             cancel_url: process.env.STRIPE_CANCEL_URL as string
         })
+        return response.status(201).json({sessionId: stripeCheckoutSession.id})
+    } else {
+        response.setHeader("Allow", "POST");
+        response.status(405).end("Method not allowed")
     }
 }

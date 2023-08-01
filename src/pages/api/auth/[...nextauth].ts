@@ -11,7 +11,48 @@ export const authOptions: AuthOptions = {
             clientSecret: process.env.GITHUB_CLIENT_SECRET as string 
         }),
     ],
+    secret: process.env.NEXT_PUBLIC_SECRET as string,
     callbacks: {
+        async session({session}){
+            const email = session.user?.email ?? ''
+            return {
+                ...session,
+            } 
+            try{
+                const userActiveSignature = await fauna.query(
+                    query.Get(
+                    query.Intersection([
+                        query.Match(
+                        query.Index('subscription_by_user_ref'),
+                        query.Select(
+                            "ref",
+                            query.Get(
+                            query.Match(
+                                query.Index('user_by_email'),
+                                query.Casefold(email)
+                            )
+                            )
+                        )
+                        ),
+                        query.Match(
+                        query.Index('subscription_by_status'),
+                        "active"
+                        )
+                    ])
+                    )
+                )
+                return {
+                    ...session,
+                    activeSignature: userActiveSignature
+                }   
+            } catch {
+                return {
+                    ...session,
+                    activeSubscription: null
+                }
+            }
+            
+        },
         async signIn({user}){
             try {
              await fauna.query(
