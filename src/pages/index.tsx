@@ -1,9 +1,23 @@
 import { SignatureButton } from '@/components/SignatureButton'
+import { useSignatureContext } from '@/context/SignatureContext'
+import { api } from '@/services/api'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from 'react'
 
+interface SignatureResponse {
+  signature: string | null;
+}
 
 export default function Home() {
+  const { setSignature } = useSignatureContext();
+  useEffect(() => {
+    api.get<SignatureResponse>("/get-user-signature")
+    .then((response) => {
+      setSignature<string | null>(response.data.signature)
+    })
+   
+  }, [])
   return (
     <>
       <Head>

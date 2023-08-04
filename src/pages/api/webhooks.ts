@@ -1,7 +1,7 @@
 import { saveSignature } from "@/services/saveSignature";
 import { stripe } from "@/services/stripe";
 import { NextApiRequest, NextApiResponse } from "next";
-import { Readable } from "stream";
+import { Readable, Writable } from "stream";
 import Stripe from "stripe";
 
 async function buffer(readable: Readable){
@@ -29,10 +29,10 @@ const relevantEvents = new Set([
 export default async (request: NextApiRequest, response: NextApiResponse) =>{
     if(request.method === "POST"){
         const buf = await buffer(request)
-
+        let signature_return = ""
         const secret = request.headers["stripe-signature"] as string | string[]
         let event: Stripe.Event
-
+        
         try {
             event = stripe.webhooks.constructEvent(buf, secret, process.env.STRIPE_WEBHOOK_SECRET as string)
         } catch (error) {
@@ -45,16 +45,15 @@ export default async (request: NextApiRequest, response: NextApiResponse) =>{
                     case 'customer.subscription.updated':
                     case 'customer.subscription.deleted':
                         const signature = event.data.object as Stripe.Subscription
-                        await saveSignature(
+                        signature_return = await saveSignature(
                             signature.id,
                             signature.customer.toString(),
                             false
                           )
-        
                         break
                     case 'checkout.session.completed':
                         const checkoutSession = event.data.object as Stripe.Checkout.Session
-                        await saveSignature(
+                        signature_return = await saveSignature(
                             checkoutSession.subscription?.toString() as string,
                             checkoutSession.customer?.toString() as string,
                             true
@@ -68,9 +67,16 @@ export default async (request: NextApiRequest, response: NextApiResponse) =>{
             }
         }
         response.json({ received: true })
-    } else {
+    }  
+    else {
         response.setHeader("Allow", "POST");
         response.status(405).end("Method not allowed")
     }
 
+}
+
+class Send extends Writable {
+    _write(chunk: any, encoding: BufferEncoding, callback: (error?: Error | null | undefined) => void): void {
+        
+    }
 }

@@ -45,5 +45,5 @@ export async function saveSignature(subscriptionId: string, customerId: string, 
             )
         )
     }
-
+    return signatureData.status
 }

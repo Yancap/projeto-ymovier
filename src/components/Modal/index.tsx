@@ -3,7 +3,11 @@ import React, { useState } from 'react'
 import { Simplify } from '../../../prismicio-types';
 import { NewMoviesDocumentData } from '@/pages/catalog';
 import { styled } from 'styled-components';
-import { ExecutionContext } from 'styled-components/dist/types';
+import { useSignatureContext } from '@/context/SignatureContext';
+import { signIn, useSession } from 'next-auth/react';
+import { getStripeJs } from '@/services/stripe-js';
+import { api } from '@/services/api';
+import { useRouter } from 'next/router';
 
 interface ModalProps{
   movie: Simplify<NewMoviesDocumentData>;
@@ -26,9 +30,27 @@ const Section = styled.section`
   }
 `
 
-
 export const Modal = ({movie, setModal}: ModalProps) => {
+  const { signature } = useSignatureContext();
   const [ viewMovie, setViewMovie ] = useState(false)
+  const { data: session } = useSession()
+  const router = useRouter();
+  async function handleSignature(){
+    if (!session) {
+        signIn('github')
+        return
+    }
+    try {
+        const response = await api.post('/signature')
+        const { sessionId } = response.data
+        const stripe = await getStripeJs()
+        await stripe?.redirectToCheckout({sessionId})
+        
+    } catch (error) {
+        alert(error)
+    }  
+  }
+
   return (
     <Section data-image={movie.background.url} className='section-modal'>
         
@@ -98,7 +120,7 @@ export const Modal = ({movie, setModal}: ModalProps) => {
                           </div>
                         ))}
                       </div>
-                      <button onClick={() => setViewMovie(true)}
+                      <button onClick={() => signature === "active" ? setViewMovie(true) : router.push("/")}
                         className='order-2 lg:order-5 justify-center flex gap-3 items-center rounded-md bg-gray-300 py-2 px-6 transition-all font-bold text-xl text-gray-800 lg:self-start hover:bg-gray-400'
                       >
                         <Image src='/play.svg' alt='play' width='18' height='20' className='mt-px'/>

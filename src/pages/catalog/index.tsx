@@ -1,9 +1,9 @@
 import { ContainerCard } from '@/components/Catalog/ContainerCard'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card } from '../../components/Card'
 import { Modal } from '@/components/Modal'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps} from 'next'
 import { getPrismicClient } from '@/services/prismic'
 import { Simplify } from '@prismicio/client/dist/types/value/types'
 import { MoviesDocumentData } from '../../../prismicio-types'
@@ -19,12 +19,19 @@ export interface NewMoviesDocumentData extends Omit<MoviesDocumentData, "gender"
 
 interface CatalogProps{
   movies: Simplify<NewMoviesDocumentData[]>;
+  signature: 'active' | 'canceled' | string;
 }
+
+
+interface SignatureResponse {
+  signature: string | null;
+}
+
 
 export default function Catalog({movies}: CatalogProps) {
   const [ modal, setModal ] = useState(false)
   const [ dataModal, setDataModal ] = useState<NewMoviesDocumentData | null>(null)
-
+  
   return (
     <main className='min-h-[calc(100vh-5rem)] bg-catalog bg-cover bg-no-repeat'>
       <section className=' bg-gradient-to-t from-gray-800 via-gray-800/60 to-gray-900  backdrop-blur-sm'>
@@ -49,7 +56,7 @@ export default function Catalog({movies}: CatalogProps) {
               </div>
               <ContainerCard>
                 {movies && movies.map(movie => (
-                  <Card movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+                  <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
                 ))}
                 
               </ContainerCard>
@@ -66,7 +73,7 @@ export default function Catalog({movies}: CatalogProps) {
           </div>
           <ContainerCard>
             {movies && movies.map(movie => (
-              <Card movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+              <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
             ))}
           </ContainerCard>
         </div>
@@ -76,9 +83,9 @@ export default function Catalog({movies}: CatalogProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({req, res, params}) => {
   const prismic = getPrismicClient();
-
+  
   const response = await prismic.getAllByType('movies', {
     fetch: [], 
     pageSize: 100, 
@@ -96,9 +103,10 @@ export const getStaticProps: GetStaticProps = async () => {
       html: movie.data.video.html?.replace(/(?:width|height)="(\d+)"/g, "class=\"iframe\" ")
     }
   }))
+  
   return {
     props: {
-      movies
+      movies,
     }
   }
 }

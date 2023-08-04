@@ -3,6 +3,17 @@ import { query } from 'faunadb'
 import NextAuth, { AuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 
+interface SignatureCollectionProps {
+    ref: any;
+    ts: number,
+    data: {
+      id: string;
+      user_id: any;
+      status: 'active' | 'canceled';
+      price_id: string;
+    }
+}
+
 
 export const authOptions: AuthOptions = {
     providers: [
@@ -15,40 +26,38 @@ export const authOptions: AuthOptions = {
     callbacks: {
         async session({session}){
             const email = session.user?.email ?? ''
-            return {
-                ...session,
-            } 
+            
             try{
-                const userActiveSignature = await fauna.query(
+                const userActiveSignature = await fauna.query<SignatureCollectionProps>(
                     query.Get(
-                    query.Intersection([
-                        query.Match(
-                        query.Index('subscription_by_user_ref'),
-                        query.Select(
-                            "ref",
-                            query.Get(
+                        query.Intersection([
                             query.Match(
-                                query.Index('user_by_email'),
-                                query.Casefold(email)
+                                query.Index('signatures_by_user_ref'),
+                                query.Select(
+                                    "ref",
+                                    query.Get(
+                                        query.Match(
+                                            query.Index('user_by_email'),
+                                            query.Casefold(email)
+                                        )
+                                    )
+                                )
+                            ),
+                            query.Match(
+                                query.Index('signatures_by_status'),
+                                "active"
                             )
-                            )
-                        )
-                        ),
-                        query.Match(
-                        query.Index('subscription_by_status'),
-                        "active"
-                        )
-                    ])
+                        ])
                     )
                 )
                 return {
                     ...session,
-                    activeSignature: userActiveSignature
+                    activeSignature: userActiveSignature.data.status
                 }   
             } catch {
                 return {
                     ...session,
-                    activeSubscription: null
+                    activeSignature: null
                 }
             }
             
