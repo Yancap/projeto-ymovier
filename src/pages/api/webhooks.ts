@@ -66,7 +66,9 @@ export default async (request: NextApiRequest, response: NextApiResponse) =>{
                 return response.json({ error: "Webhook handler failed."})
             }
         }
-        response.json({ received: true })
+        response.json({ received: true, signature: signature_return })
+        
+        response.redirect("/")
     }  
     else {
         response.setHeader("Allow", "POST");

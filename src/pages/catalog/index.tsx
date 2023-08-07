@@ -33,36 +33,39 @@ export default function Catalog({movies}: CatalogProps) {
   const [ dataModal, setDataModal ] = useState<NewMoviesDocumentData | null>(null)
   
   return (
-    <main className='min-h-[calc(100vh-5rem)] bg-catalog bg-cover bg-no-repeat'>
-      <section className=' bg-gradient-to-t from-gray-800 via-gray-800/60 to-gray-900  backdrop-blur-sm'>
-        <div className='container'>
-          <section className="catalog-section-one ">
-            <h1 className='text-white font-bold text-7xl'>
-              Catálogo
-            </h1>
-          </section>
-          <section className="relative container pb-40 ">
-            <div className='-top-80 absolute z-10 container'>
-              <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
-                <h2 className='text-white font-medium text-2xl'>
-                  Principais Filmes
-                </h2>
-                <form className='flex '>
-                  <input type="text" placeholder='Pesquisar' className='bg-transparent pb-1 transition-all border-b-gray-500 border-b-2 text-light-gray-300 outline-none  hover:placeholder:text-light-gray-300 focus:placeholder:text-light-gray-300 focus:border-b-light-gray-400'/>
-                  <button type="submit" className='bg-gray-400/20 py-1 px-2 rounded-r-full rounded-tl-full transition-all hover:bg-gray-400'>
-                    <Image src='/search.svg' alt='search' height='15' width='15'/>
-                  </button>
-                </form>
+    <main className='min-h-[calc(100vh-5rem)] '>
+      <section className='bg-catalog bg-cover bg-no-repeat'>
+        <div className='bg-gradient-to-t from-gray-800 via-gray-800/70 to-gray-900 backdrop-blur-sm'>
+          <div className='container'>
+            <section className="catalog-section-one ">
+              <h1 className='text-white font-bold text-7xl'>
+                Catálogo
+              </h1>
+            </section>
+            <section className="relative container pb-40 ">
+              <div className='-top-80 absolute z-10 container'>
+                <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
+                  <h2 className='text-white font-medium text-2xl'>
+                    Principais Filmes
+                  </h2>
+                  <form className='flex '>
+                    <input type="text" placeholder='Pesquisar' className='bg-transparent pb-1 transition-all border-b-gray-500 border-b-2 text-light-gray-300 outline-none  hover:placeholder:text-light-gray-300 focus:placeholder:text-light-gray-300 focus:border-b-light-gray-400'/>
+                    <button type="submit" className='bg-gray-400/20 py-1 px-2 rounded-r-full rounded-tl-full transition-all hover:bg-gray-400'>
+                      <Image src='/search.svg' alt='search' height='15' width='15'/>
+                    </button>
+                  </form>
+                </div>
+                <ContainerCard>
+                  {movies && movies.map(movie => (
+                    <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+                  ))}
+                  
+                </ContainerCard>
               </div>
-              <ContainerCard>
-                {movies && movies.map(movie => (
-                  <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
-                ))}
-                
-              </ContainerCard>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
+
       </section>
       <section className=' bg-gray-800 pb-20 pt-10'>
         <div className='container'>

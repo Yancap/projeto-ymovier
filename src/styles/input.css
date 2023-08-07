@@ -4,10 +4,10 @@
 
 @layer components {
     .div-link-active{
-        @apply border-b-red-700 border-b-[5px];
+        @apply border-b-red-700 border-b-[2px];
     }
     .div-link{
-        @apply py-6 px-2;
+        @apply py-6 px-2 h-full;
     }
     .link-active{
         @apply text-white font-bold text-lg;

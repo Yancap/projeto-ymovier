@@ -26,8 +26,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='h-[calc(100vh-5rem)] bg-home bg-cover bg-no-repeat'>
-        <div className="h-full  bg-gradient-to-r from-gray-900 to-transparent py-32 px-3">
+      <main className='h-[calc(100vh-4rem)] bg-home bg-cover bg-no-repeat'>
+        <div className="h-full [background:linear-gradient(135deg,_#1E1E1E_35.16%,_#1E1E1E2f_100%)]    py-32 px-3">
             <section className='container'>
               <div className='max-w-2xl flex flex-col gap-2 '>
                   <h1 className='font-display font-black text-white text-[4rem] leading-[4rem]'>

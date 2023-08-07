@@ -557,12 +557,13 @@ video {
 }
 
 .div-link-active {
-  border-bottom-width: 5px;
+  border-bottom-width: 2px;
   --tw-border-opacity: 1;
   border-bottom-color: rgb(153 1 0 / var(--tw-border-opacity));
 }
 
 .div-link {
+  height: 100%;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   padding-left: 0.5rem;
@@ -831,16 +832,12 @@ video {
   display: none;
 }
 
-.h-20 {
-  height: 5rem;
-}
-
 .h-8 {
   height: 2rem;
 }
 
-.h-\[calc\(100vh-5rem\)\] {
-  height: calc(100vh - 5rem);
+.h-\[calc\(100vh-4rem\)\] {
+  height: calc(100vh - 4rem);
 }
 
 .h-auto {
@@ -1015,6 +1012,10 @@ video {
   border-bottom-width: 2px;
 }
 
+.border-b {
+  border-bottom-width: 1px;
+}
+
 .border-b-gray-500 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(106 106 106 / var(--tw-border-opacity));
@@ -1023,6 +1024,11 @@ video {
 .border-b-light-gray-500 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(174 174 174 / var(--tw-border-opacity));
+}
+
+.border-b-gray-800 {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(35 35 35 / var(--tw-border-opacity));
 }
 
 .bg-gray-300 {
@@ -1077,6 +1083,18 @@ video {
   background-image: url('/background-home.jpg');
 }
 
+.bg-gradient-to-tr {
+  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-tl {
+  background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+}
+
+.bg-\[linear-gradient\(135deg\2c _\#232323_35\.16\%\2c _\#232323_100\%\)\] {
+  background-image: linear-gradient(135deg, #232323 35.16%, #232323 100%);
+}
+
 .from-gray-700\/50 {
   --tw-gradient-from: rgb(40 40 40 / 0.5) var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(40 40 40 / 0) var(--tw-gradient-to-position);
@@ -1101,9 +1119,9 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.via-gray-800\/60 {
+.via-gray-800\/70 {
   --tw-gradient-to: rgb(35 35 35 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), rgb(35 35 35 / 0.6) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(35 35 35 / 0.7) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
 .to-gray-700\/50 {
@@ -1336,6 +1354,26 @@ video {
 
 .\[scroll-snap-stop\:always\;\] {
   scroll-snap-stop: always;;
+}
+
+.\[background\:_\] {
+  background: ;
+}
+
+.\[background\:linear-gradient\(135deg\2c _\#232323_35\.16\%\2c _\#232323_100\%\)\] {
+  background: linear-gradient(135deg, #232323 35.16%, #232323 100%);
+}
+
+.\[background\:linear-gradient\(135deg\2c _\#232323_35\.16\%\2c _\#2323232f_100\%\)\] {
+  background: linear-gradient(135deg, #232323 35.16%, #2323232f 100%);
+}
+
+.\[background\:linear-gradient\(135deg\2c _\#1E1E1E_35\.16\%\2c _\#2323232f_100\%\)\] {
+  background: linear-gradient(135deg, #1E1E1E 35.16%, #2323232f 100%);
+}
+
+.\[background\:linear-gradient\(135deg\2c _\#1E1E1E_35\.16\%\2c _\#1E1E1E2f_100\%\)\] {
+  background: linear-gradient(135deg, #1E1E1E 35.16%, #1E1E1E2f 100%);
 }
 
 .hover\:z-30:hover {
