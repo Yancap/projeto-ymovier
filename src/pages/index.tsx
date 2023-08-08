@@ -27,7 +27,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='h-[calc(100vh-4rem)] bg-home bg-cover bg-no-repeat'>
-        <div className="h-full [background:linear-gradient(135deg,_#1E1E1E_35.16%,_#1E1E1E2f_100%)]    py-32 px-3">
+        <div className="h-full [background:linear-gradient(135deg,_#1E1E1E_35.16%,_#1E1E1E2f_100%)] py-20 md:py-32 px-3">
             <section className='container'>
               <div className='max-w-2xl flex flex-col gap-2 '>
                   <h1 className='font-display font-black text-white text-[4rem] leading-[4rem]'>

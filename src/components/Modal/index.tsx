@@ -98,7 +98,7 @@ export const Modal = ({movie, setModal}: ModalProps) => {
                           </span>
                         </div>
                       </div>
-                      <div className='order-3 lg:order-2 relative grid place-items-center w-max h-max' >
+                      <div className='hidden lg:order-2 lg:relative lg:grid place-items-center w-max h-max' >
                         <Image src='/star.svg' alt='star' width='76' height='76'/>
                         <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-1 font-bold text-xl">
                           {movie.review}

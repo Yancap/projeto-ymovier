@@ -4,16 +4,16 @@
 
 @layer components {
     .div-link-active{
-        @apply border-b-red-700 border-b-[2px];
+        @apply border-t-red-700 border-t-[2px] md:border-b-red-700 md:border-b-[2px];
     }
     .div-link{
-        @apply py-6 px-2 h-full;
+        @apply py-3 md:py-6 px-2 h-full;
     }
     .link-active{
-        @apply text-white font-bold text-lg;
+        @apply  text-white font-bold text-base md:text-lg;
     }
     .link{
-        @apply text-gray-300 transition-all text-lg;
+        @apply text-gray-300 transition-all md:text-lg;
     }
     .link:hover{
         @apply font-medium text-white;
@@ -36,7 +36,7 @@
     }
 
     .container {
-        @apply mx-auto xl:max-w-5xl lg:max-w-4xl md:max-w-xl max-w-lg;
+        @apply mx-auto xl:max-w-5xl lg:max-w-4xl md:max-w-xl sm:max-w-lg max-w-sm;
     }
 
     .container-card{
