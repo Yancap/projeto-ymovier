@@ -31,6 +31,9 @@ module.exports = {
       backgroundImage: {
         'home': "url('/background-home.jpg')",
         'catalog': "url('/background-catalog.png')",
+      },
+      screens: {
+        'xs': "500px"
       }
     },
   },

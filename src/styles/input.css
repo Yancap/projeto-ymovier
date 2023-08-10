@@ -36,7 +36,7 @@
     }
 
     .container {
-        @apply mx-auto xl:max-w-5xl lg:max-w-4xl md:max-w-xl sm:max-w-lg max-w-sm;
+        @apply mx-auto xs:px-0 xl:max-w-5xl lg:max-w-4xl md:max-w-xl sm:max-w-lg max-w-md w-full px-4;
     }
 
     .container-card{
@@ -44,7 +44,7 @@
     }
 
     .card {
-        @apply shrink-0 mt-4 xl:w-56 lg:w-48 relative cursor-pointer transition-all rounded-md overflow-hidden;
+        @apply shrink-0 mt-4 w-auto md:w-40 xl:w-56 lg:w-48 relative cursor-pointer transition-all rounded-md overflow-hidden;
     }
     
     .section-modal{

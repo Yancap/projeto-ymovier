@@ -43,7 +43,7 @@ export default function Catalog({movies}: CatalogProps) {
               </h1>
             </section>
             <section className="relative container pb-40 ">
-              <div className='-top-80 absolute z-10 container'>
+              <div className='-top-80 absolute z-10 sm:container w-[calc(100%-1rem)]'>
                 <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
                   <h2 className='text-white font-medium text-2xl'>
                     Principais Filmes
