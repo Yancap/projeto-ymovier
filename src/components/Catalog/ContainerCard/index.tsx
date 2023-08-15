@@ -51,7 +51,7 @@ export const ContainerCard = ({children}: Props) => {
   return (
     <div className="relative flex justify-between max-w-full">
         <div ref={leftArrow} className='absolute h-full z-20 bg-gradient-to-r from-gray-700/50 to-transparent w-24 flex items-center select-none' onPointerDown={handleScrollLeft}>
-            <div className='p-[2vmin] bg-gray-600/50 rounded-full -ml-6 cursor-pointer hover:bg-gray-600/80'>
+            <div className='p-[2vmin] bg-gray-600/50 rounded-full -ml-2 md:-ml-6 cursor-pointer hover:bg-gray-600/80'>
                <Image src='/arrow.svg' alt='left' height='18' width='18' className='w-[3vmin] rotate-180'/> 
             </div>
         </div>
@@ -59,7 +59,7 @@ export const ContainerCard = ({children}: Props) => {
            {children} 
         </div>
         <div className='absolute h-full z-20 right-0 bg-gradient-to-r from-transparent to-gray-700/50 w-24 flex items-center justify-end select-none' onPointerDown={handleScrollRight}>
-            <div className='p-[2vmin] bg-gray-600/50 rounded-full -mr-6 cursor-pointer hover:bg-gray-600/80'>
+            <div className='p-[2vmin] bg-gray-600/50 rounded-full -mr-2 md:-mr-6 cursor-pointer hover:bg-gray-600/80'>
                <Image src='/arrow.svg' alt='left' height='18' width='18' className='w-[3vmin]'/> 
             </div>
         </div>

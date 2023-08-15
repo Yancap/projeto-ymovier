@@ -38,18 +38,22 @@ export default function Catalog({movies}: CatalogProps) {
         <div className='bg-gradient-to-t from-gray-800 via-gray-800/70 to-gray-900 backdrop-blur-sm'>
           <div className='container'>
             <section className="catalog-section-one ">
-              <h1 className='text-white font-bold text-7xl'>
+              <h1 className='text-white font-bold text-5xl lg:text-7xl'>
                 Catálogo
               </h1>
             </section>
-            <section className="relative container pb-40 ">
+            <section className="relative container pb-20 md:pb-40 ">
               <div className='-top-80 absolute z-10 sm:container w-[calc(100%-1rem)]'>
-                <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
-                  <h2 className='text-white font-medium text-2xl'>
+                <div className='flex gap-4 flex-col md:flex-row pb-2 justify-between border-b-light-gray-500 border-b-2'>
+                  <h2 className='text-white font-medium text-2xl order-1'>
                     Principais Filmes
                   </h2>
-                  <form className='flex '>
-                    <input type="text" placeholder='Pesquisar' className='bg-transparent pb-1 transition-all border-b-gray-500 border-b-2 text-light-gray-300 outline-none  hover:placeholder:text-light-gray-300 focus:placeholder:text-light-gray-300 focus:border-b-light-gray-400'/>
+                  <form className='flex w-full md:w-auto md:order-2'>
+                    <input type="text" placeholder='Pesquisar' 
+                    className='bg-transparent pb-1 transition-all w-full md:w-auto
+                    border-b-gray-500 border-b-2 text-light-gray-300 outline-none  
+                    hover:placeholder:text-light-gray-300 focus:placeholder:text-light-gray-300 
+                    focus:border-b-light-gray-400'/>
                     <button type="submit" className='bg-gray-400/20 py-1 px-2 rounded-r-full rounded-tl-full transition-all hover:bg-gray-400'>
                       <Image src='/search.svg' alt='search' height='15' width='15'/>
                     </button>

@@ -32,7 +32,7 @@
     }
 
     .catalog-section-one{
-        @apply h-[calc(100vh-5rem)]  py-24 px-32 text-center;
+        @apply h-[calc(100vh-5rem)]  py-16 lg:py-24 mx-auto text-center;
     }
 
     .container {
@@ -40,16 +40,17 @@
     }
 
     .container-card{
-        @apply flex items-center gap-4 overflow-x-scroll pb-2 relative overflow-y-clip w-full;
+        @apply flex  items-stretch gap-4 overflow-x-scroll pb-2 relative overflow-y-clip w-full;
     }
 
     .card {
-        @apply shrink-0 mt-4 w-auto md:w-40 xl:w-56 lg:w-48 relative cursor-pointer transition-all rounded-md overflow-hidden;
+        @apply shrink-0 flex flex-col  mt-4 h-96 w-auto md:w-40 xl:w-56 lg:w-48 relative cursor-pointer transition-all rounded-md overflow-hidden;
     }
     
     .section-modal{
-        @apply h-screen w-screen backdrop-blur fixed top-0 left-0 z-50 flex items-center justify-center lg:pr-10 lg:pl-5;
+        @apply h-screen w-screen backdrop-blur fixed top-0 left-0 z-50 flex items-center justify-center ;
     }
+
 
     .iframe {
         @apply h-full w-full;
