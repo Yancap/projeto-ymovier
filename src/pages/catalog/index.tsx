@@ -79,7 +79,23 @@ export default function Catalog({movies}: CatalogProps) {
             </h2>
           </div>
           <ContainerCard>
-            {movies && movies.map(movie => (
+            {movies && movies.filter(movie => movie.gender.includes("Ação"))
+            .map(movie => (
+              <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+            ))}
+          </ContainerCard>
+        </div>
+      </section>
+      <section className=' bg-gray-800 pb-20 pt-8'>
+        <div className='container'>
+          <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
+            <h2 className='text-white font-medium text-2xl'>
+              Filmes de Suspense
+            </h2>
+          </div>
+          <ContainerCard>
+            {movies && movies.filter(movie => movie.gender.includes("Suspense"))
+            .map(movie => (
               <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
             ))}
           </ContainerCard>
