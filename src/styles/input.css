@@ -4,7 +4,8 @@
 
 @layer components {
     .div-link-active{
-        @apply border-t-red-700 border-t-[2px] md:border-b-red-700 md:border-b-[2px];
+        @apply border-t-red-700 border-t-[2px] 
+        md:border-b-red-700 md:border-t-[0px] md:border-b-[2px];
     }
     .div-link{
         @apply py-3 md:py-6 px-2 h-full;
@@ -19,13 +20,15 @@
         @apply font-medium text-white;
     }
     .signIn{
-        @apply py-2 px-6 bg-gray-700 rounded-full text-white font-medium text-base transition-all;
+        @apply py-2 px-6 bg-gray-700 rounded-full text-white 
+        font-medium text-base transition-all;
     }
     .signIn:hover{
         @apply bg-gray-800 text-gray-200;
     }
     .subscribe{
-        @apply bg-red-500 flex items-center gap-4 my-8 py-5 px-8 rounded-full self-start transition-all font-display font-black text-3xl text-gray-700;
+        @apply bg-red-500 flex items-center gap-4 my-8 py-5 px-8 
+        rounded-full self-start transition-all font-display font-black text-3xl text-gray-700;
     }
     .subscribe:hover{
         @apply bg-red-700;
@@ -36,7 +39,8 @@
     }
 
     .container {
-        @apply mx-auto xs:px-0 xl:max-w-5xl lg:max-w-4xl md:max-w-xl sm:max-w-lg max-w-md w-full px-4;
+        @apply mx-auto xs:px-0 xl:max-w-5xl lg:max-w-4xl md:max-w-xl 
+        sm:max-w-lg max-w-md w-full px-4;
     }
 
     .container-card{
@@ -44,13 +48,31 @@
     }
 
     .card {
-        @apply shrink-0 flex flex-col  mt-4 h-96 w-auto md:w-40 xl:w-56 lg:w-48 relative cursor-pointer transition-all rounded-md overflow-hidden;
+        @apply shrink-0 flex flex-col  mt-4 h-96 w-auto md:w-40 xl:w-56 
+        lg:w-48 relative cursor-pointer transition-all rounded-md overflow-hidden;
     }
     
     .section-modal{
-        @apply h-screen w-screen backdrop-blur fixed top-0 left-0 z-50 flex items-center justify-center ;
+        @apply h-screen w-screen backdrop-blur fixed top-0 left-0 z-50 
+        flex items-center justify-center ;
     }
 
+    .search-input {
+        @apply md:opacity-0 bg-transparent pb-1 w-full
+        border-b-gray-500 border-b-2 text-light-gray-300 outline-none transition-all  
+        group-hover:opacity-100 md:w-auto 
+        focus:placeholder:text-light-gray-300 ;
+    }
+    
+    .search-input:focus {
+        @apply border-b-light-gray-400;
+    }
+
+    .search-button {
+        @apply bg-gray-400/50 py-2 px-2 rounded-r-lg md:rounded-full  
+        transition-all hover:bg-gray-400 group-hover:rounded-none
+        group-hover:rounded-r-lg;
+    }
 
     .iframe {
         @apply h-full w-full;

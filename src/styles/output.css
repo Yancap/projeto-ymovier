@@ -570,6 +570,7 @@ video {
 
 @media (min-width: 768px) {
   .div-link-active {
+    border-top-width: 0px;
     border-bottom-width: 2px;
     --tw-border-opacity: 1;
     border-bottom-color: rgb(153 1 0 / var(--tw-border-opacity));
@@ -798,6 +799,78 @@ video {
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
+.search-input {
+  width: 100%;
+  border-bottom-width: 2px;
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(106 106 106 / var(--tw-border-opacity));
+  background-color: transparent;
+  padding-bottom: 0.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(222 222 222 / var(--tw-text-opacity));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.search-input:focus::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(222 222 222 / var(--tw-text-opacity));
+}
+
+.search-input:focus::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(222 222 222 / var(--tw-text-opacity));
+}
+
+.group:hover .search-input {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .search-input {
+    width: auto;
+    opacity: 0;
+  }
+}
+
+.search-input:focus {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(217 217 217 / var(--tw-border-opacity));
+}
+
+.search-button {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background-color: rgb(156 163 175 / 0.5);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.search-button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
+.group:hover .search-button {
+  border-radius: 0px;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .search-button {
+    border-radius: 9999px;
+  }
+}
+
 .iframe {
   height: 100%;
   width: 100%;
@@ -934,6 +1007,10 @@ video {
 
 .min-h-\[calc\(100vh-5rem\)\] {
   min-height: calc(100vh - 5rem);
+}
+
+.w-0 {
+  width: 0px;
 }
 
 .w-24 {
@@ -1090,15 +1167,6 @@ video {
   border-radius: 0.375rem;
 }
 
-.rounded-r-full {
-  border-top-right-radius: 9999px;
-  border-bottom-right-radius: 9999px;
-}
-
-.rounded-tl-full {
-  border-top-left-radius: 9999px;
-}
-
 .border {
   border-width: 1px;
 }
@@ -1127,8 +1195,8 @@ video {
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
-.bg-gray-400\/20 {
-  background-color: rgb(156 163 175 / 0.2);
+.bg-gray-400\/50 {
+  background-color: rgb(156 163 175 / 0.5);
 }
 
 .bg-gray-600 {
@@ -1250,11 +1318,6 @@ video {
   padding-right: 6px;
 }
 
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1298,6 +1361,10 @@ video {
   padding-top: 0.5rem;
 }
 
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .font-display {
   font-family: var(--font-poppins);
 }
@@ -1310,11 +1377,6 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .text-5xl {
@@ -1414,6 +1476,10 @@ video {
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .backdrop-blur-sm {
@@ -1566,6 +1632,10 @@ video {
   color: rgb(222 222 222 / var(--tw-text-opacity));
 }
 
+.group:hover .group-hover\:w-full {
+  width: 100%;
+}
+
 .group:hover .group-hover\:text-red-500 {
   --tw-text-opacity: 1;
   color: rgb(185 5 4 / var(--tw-text-opacity));
@@ -1697,27 +1767,5 @@ video {
   .lg\:text-7xl {
     font-size: 4.5rem;
     line-height: 1;
-  }
-}
-
-@media (min-width: 1280px) {
-  .xl\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .xl\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
-  .xl\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
-  }
-
-  .xl\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
   }
 }

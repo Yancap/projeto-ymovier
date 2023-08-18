@@ -7,6 +7,7 @@ import { GetServerSideProps} from 'next'
 import { getPrismicClient } from '@/services/prismic'
 import { Simplify } from '@prismicio/client/dist/types/value/types'
 import { MoviesDocumentData } from '../../../prismicio-types'
+import { Search } from '@/components/Search'
 
 export interface NewMoviesDocumentData extends Omit<MoviesDocumentData, "gender" | "poster" | "runtime"> {
   gender: string;
@@ -48,16 +49,7 @@ export default function Catalog({movies}: CatalogProps) {
                   <h2 className='text-white font-medium text-2xl order-1'>
                     Principais Filmes
                   </h2>
-                  <form className='flex w-full md:w-auto md:order-2'>
-                    <input type="text" placeholder='Pesquisar' 
-                    className='bg-transparent pb-1 transition-all w-full md:w-auto
-                    border-b-gray-500 border-b-2 text-light-gray-300 outline-none  
-                    hover:placeholder:text-light-gray-300 focus:placeholder:text-light-gray-300 
-                    focus:border-b-light-gray-400'/>
-                    <button type="submit" className='bg-gray-400/20 py-1 px-2 rounded-r-full rounded-tl-full transition-all hover:bg-gray-400'>
-                      <Image src='/search.svg' alt='search' height='15' width='15'/>
-                    </button>
-                  </form>
+                  <Search />
                 </div>
                 <ContainerCard>
                   {movies && movies.map(movie => (
