@@ -55,7 +55,6 @@ export default function Catalog({movies}: CatalogProps) {
                   {movies && movies.map(movie => (
                     <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
                   ))}
-                  
                 </ContainerCard>
               </div>
             </section>

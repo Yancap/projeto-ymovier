@@ -1,10 +1,11 @@
 import { getPrismicClient } from "@/services/prismic";
 import { NextApiRequest, NextApiResponse } from "next";
-import { AllDocumentTypes } from "../../../../prismicio-types";
+import { AllDocumentTypes } from "../../prismicio-types";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const { search } = req.body
-    const trashWord = `a, à, agora, ainda, algum, alguma, 
+export default async function searchEngine(search: string | undefined){
+
+    if(search){
+        const trashWord = `a, à, agora, ainda, algum, alguma, 
     algumas, alguns, ampla, amplas, amplo, amplos, ante, antes, 
     ao, aos, após, aquela, aquelas, aquele, aqueles, aquilo, as, 
     até, através, cada, coisa, coisas, com, como, contra, contudo, 
@@ -28,11 +29,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     sido, só, sob, sobre, sua, suas, talvez, também, tampouco, 
     te, tem, tendo, tenha, ter, teu, teus, ti, tido, tinha, tinham, 
     toda, todas, todavia, todo, todos, tu, tua, tuas, tudo, um, uma, umas, 
-    uns, vendo, ver, vez, vindo, vir, vos, vós`.split(', ')
-    const prismic = getPrismicClient();
-    const movies = await prismic.getAllByType('movies')
-    if (search && req.method === "POST") {
-        
+        uns, vendo, ver, vez, vindo, vir, vos, vós`.split(', ')
+        const prismic = getPrismicClient();
+        const movies = await prismic.getAllByType('movies')
         const clean: string[] = search.toLowerCase()
         .split(' ').filter((word: string)=>{
             return word && trashWord.every(trash => {
@@ -41,10 +40,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         })
         
         if (clean.length === 0) {
-            return res.status(204).send("Não encontrado")
+            return { movies: null }
         }
+
         const searchClean = clean.join(' ')
-        
         const response = movies.filter(movie => {
             return (
             movie.data.title?.toLowerCase().includes(searchClean) || 
@@ -65,10 +64,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               html: movie.data.video.html?.replace(/(?:width|height)="(\d+)"/g, "class=\"iframe\" ")
             }
           }))
-        return res.send({ movies: moviesData })
-    } else {
-        res.setHeader("Allow", "POST");
-        return res.status(405).end("Method not allowed")
+        return { movies: moviesData }
     }
+    return { movies: null }
   };
   
