@@ -48,7 +48,7 @@
     }
 
     .card {
-        @apply shrink-0 flex flex-col  mt-4 h-96 w-auto md:w-40 xl:w-56 
+        @apply shrink-0 flex flex-col mt-4 h-96 w-[25vw] md:w-40 xl:w-56 
         lg:w-48 relative cursor-pointer transition-all rounded-md overflow-hidden;
     }
     
@@ -76,5 +76,9 @@
 
     .iframe {
         @apply h-full w-full;
+    }
+
+    .container-results{
+        @apply flex items-stretch gap-4 pb-2 relative flex-wrap w-full;
     }
 }

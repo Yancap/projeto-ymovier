@@ -31,29 +31,28 @@ export default function SearchPage({movies}: SearchProps) {
       <section className='bg-catalog bg-cover bg-no-repeat'>
         <div className='bg-gradient-to-t from-gray-800 via-gray-800/70 to-gray-900 backdrop-blur-sm'>
           <div className='container'>
-            <section className="catalog-section-one ">
+            <section className="py-16 lg:py-24 mx-auto text-center">
               <h1 className='text-white font-bold text-5xl lg:text-7xl'>
                 Resultados
               </h1>
             </section>
             <section className="relative container pb-20 md:pb-40 ">
-              <div className='-top-80 absolute z-10 sm:container w-[calc(100%-1rem)]'>
+              <div className=' z-10 sm:container w-[calc(100%-1rem)]'>
                 <div className='flex gap-4 flex-col md:flex-row pb-2 justify-between border-b-light-gray-500 border-b-2'>
                   <h2 className='text-white font-medium text-2xl order-1'>
                     {result}
                   </h2>
                   <Search />
                 </div>
-                <ContainerCard>
+                <div className={`container-results z-10`} >
                   {movies && movies.map(movie => (
                     <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
                   ))}
-                </ContainerCard>
+                </div>
               </div>
             </section>
           </div>
         </div>
-
       </section>
       {(modal && dataModal) && <Modal movie={dataModal} setModal={setModal}/> }
     </main>
