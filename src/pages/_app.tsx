@@ -1,4 +1,6 @@
 import '@/styles/output.css'
+import '@/styles/global.scss'
+
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import type { AppProps } from 'next/app'

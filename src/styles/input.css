@@ -3,13 +3,8 @@
 @tailwind utilities;
 
 @layer components {
-    .div-link-active{
-        @apply border-t-red-700 border-t-[2px] 
-        md:border-b-red-700 md:border-t-[0px] md:border-b-[2px];
-    }
-    .div-link{
-        @apply py-3 md:py-6 px-2 h-full;
-    }
+    
+    
     .link-active{
         @apply  text-white font-bold text-base md:text-lg;
     }
@@ -38,10 +33,7 @@
         @apply h-[calc(100vh-5rem)]  py-16 lg:py-24 mx-auto text-center;
     }
 
-    .container {
-        @apply mx-auto xs:px-0 xl:max-w-5xl lg:max-w-4xl md:max-w-xl 
-        sm:max-w-lg max-w-md w-full px-4;
-    }
+    
 
     .container-card{
         @apply flex  items-stretch gap-4 overflow-x-scroll pb-2 relative overflow-y-clip w-full;
