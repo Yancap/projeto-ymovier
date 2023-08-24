@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
         <div className={`container ${styles.container}`}>
-          <div className='flex gap-10'>
+          <div >
             <Image src='/logo.svg' alt='logo' width='122' height='32'/>
             <nav className={styles.navbar}>
               <div className='container'>
