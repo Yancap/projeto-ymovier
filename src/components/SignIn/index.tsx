@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './signIn.module.scss'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 export const SignIn = () => {
@@ -7,11 +8,11 @@ export const SignIn = () => {
 
   return session ? 
   (
-    <button className='signIn' onClick={() => signOut()}>
+    <button className={styles.signIn} onClick={() => signOut()}>
         {session.user?.name}
     </button>
   ) : (
-      <button className='signIn'  onClick={() => signIn('github')}>
+      <button className={styles.signIn}  onClick={() => signIn('github')}>
           Entrar
       </button>
     )

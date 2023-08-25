@@ -3,6 +3,8 @@ import { useSignatureContext } from '@/context/SignatureContext'
 import { api } from '@/services/api'
 import Head from 'next/head'
 import Image from 'next/image'
+import styles from './index.module.scss'
+
 import { useEffect } from 'react'
 
 interface SignatureResponse {
@@ -26,21 +28,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='h-[calc(100vh-4rem)] bg-home bg-cover bg-no-repeat'>
-        <div className="h-full [background:linear-gradient(135deg,_#1E1E1E_35.16%,_#1E1E1E2f_100%)] py-20 md:py-32 px-3">
+      <main className={styles.main}>
+        <div>
             <section className='container'>
-              <div className='max-w-2xl flex flex-col gap-2 '>
-                  <h1 className='font-display font-black text-white text-[4rem] leading-[4rem]'>
-                    <strong className='text-red-500'>Filmes</strong>  para todas as pessoas<strong className='text-red-500'>.</strong>
+              <div className={styles.content}>
+                  <h1>
+                    <strong>Filmes</strong>  para todas as pessoas<strong>.</strong>
                   </h1>
-                  <h2 className='text-white text-3xl'>
+                  <h2>
                     Assista a qualquer filme, em qualquer lugar
-                    por apenas <strong className='font-display text-red-500 font-bold'>R$ 19,99</strong> 
+                    por apenas <strong>R$ 19,99</strong> 
                   </h2>
                   <SignatureButton />
               </div>
             </section>
-          </div>
+        </div>
     </main>
     </>
   )

@@ -5,29 +5,7 @@
 @layer components {
     
     
-    .link-active{
-        @apply  text-white font-bold text-base md:text-lg;
-    }
-    .link{
-        @apply text-gray-300 transition-all md:text-lg;
-    }
-    .link:hover{
-        @apply font-medium text-white;
-    }
-    .signIn{
-        @apply py-2 px-6 bg-gray-700 rounded-full text-white 
-        font-medium text-base transition-all;
-    }
-    .signIn:hover{
-        @apply bg-gray-800 text-gray-200;
-    }
-    .subscribe{
-        @apply bg-red-500 flex items-center gap-4 my-8 py-5 px-8 
-        rounded-full self-start transition-all font-display font-black text-3xl text-gray-700;
-    }
-    .subscribe:hover{
-        @apply bg-red-700;
-    }
+    
 
     .catalog-section-one{
         @apply h-[calc(100vh-5rem)]  py-16 lg:py-24 mx-auto text-center;

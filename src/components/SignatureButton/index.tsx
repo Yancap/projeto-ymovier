@@ -1,6 +1,7 @@
 import { api } from '@/services/api'
 import { getStripeJs } from '@/services/stripe-js'
 import { signIn, useSession } from 'next-auth/react'
+import styles from './signatureButton.module.scss'
 import Image from 'next/image'
 import React from 'react'
 
@@ -21,8 +22,7 @@ export const SignatureButton = () => {
     }  
   }
   return (
-    <button className='subscribe' onClick={handleSignature}>
-        <Image src='/play.svg' alt='play' width='28' height='32' className='w-6 h-8'/>
+    <button className={styles.signature} onClick={handleSignature}>
         Assine agora
     </button>
   )

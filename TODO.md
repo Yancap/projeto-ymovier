@@ -1,1 +1,2 @@
-- [] Reestilização do SignIn, dps Home
+- [x] Reestilização do SignIn, dps Home
+- [] Reestilização da catalog
