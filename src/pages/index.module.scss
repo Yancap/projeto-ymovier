@@ -1,5 +1,5 @@
 .main {
-    height: calc(100vh - 4rem);
+    height: var(--main-height);
     background-image: url('/background-home.jpg');
     background-size: cover;
     background-repeat: no-repeat;

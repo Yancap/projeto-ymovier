@@ -5,28 +5,9 @@ import { Card } from '../../components/Card'
 import { Modal } from '@/components/Modal'
 import { GetServerSideProps} from 'next'
 import { getPrismicClient } from '@/services/prismic'
-import { Simplify } from '@prismicio/client/dist/types/value/types'
-import { MoviesDocumentData } from '../../../prismicio-types'
 import { Search } from '@/components/Search'
-
-export interface NewMoviesDocumentData extends Omit<MoviesDocumentData, "gender" | "poster" | "runtime"> {
-  gender: string;
-  poster: {
-    url: string;
-    alt: string
-  }
-  runtime: string;
-}
-
-interface CatalogProps{
-  movies: Simplify<NewMoviesDocumentData[]>;
-  signature: 'active' | 'canceled' | string;
-}
-
-
-interface SignatureResponse {
-  signature: string | null;
-}
+import styles from './catalog.module.scss'
+import {CatalogProps, NewMoviesDocumentData, } from './catalog'
 
 
 export default function Catalog({movies}: CatalogProps) {
@@ -34,18 +15,18 @@ export default function Catalog({movies}: CatalogProps) {
   const [ dataModal, setDataModal ] = useState<NewMoviesDocumentData | null>(null)
   
   return (
-    <main className='min-h-[calc(100vh-5rem)] '>
-      <section className='bg-catalog bg-cover bg-no-repeat'>
-        <div className='bg-gradient-to-t from-gray-800 via-gray-800/70 to-gray-900 backdrop-blur-sm'>
+    <main className={styles.main}>
+      <section>
+        <div>
           <div className='container'>
-            <section className="catalog-section-one ">
-              <h1 className='text-white font-bold text-5xl lg:text-7xl'>
+            <section className={styles.section_header}>
+              <h1>
                 Catálogo
               </h1>
             </section>
-            <section className="relative container pb-20 md:pb-40 ">
-              <div className='-top-80 absolute z-10 sm:container w-[calc(100%-1rem)]'>
-                <div className='flex gap-4 flex-col md:flex-row pb-2 justify-between border-b-light-gray-500 border-b-2'>
+            <section className={styles.section_floating}>
+              <div>
+                <div className={styles.heading}>
                   <h2 className='text-white font-medium text-2xl order-1'>
                     Principais Filmes
                   </h2>
@@ -60,11 +41,10 @@ export default function Catalog({movies}: CatalogProps) {
             </section>
           </div>
         </div>
-
       </section>
-      <section className=' bg-gray-800 pb-20 pt-10'>
+      <section className={styles.section}>
         <div className='container'>
-          <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
+          <div className={styles.heading}>
             <h2 className='text-white font-medium text-2xl'>
               Filmes de Ação
             </h2>
@@ -77,9 +57,9 @@ export default function Catalog({movies}: CatalogProps) {
           </ContainerCard>
         </div>
       </section>
-      <section className=' bg-gray-800 pb-20 pt-8'>
+      <section className={styles.section}>
         <div className='container'>
-          <div className='flex pb-2 justify-between border-b-light-gray-500 border-b-2'>
+          <div className={styles.heading}>
             <h2 className='text-white font-medium text-2xl'>
               Filmes de Suspense
             </h2>

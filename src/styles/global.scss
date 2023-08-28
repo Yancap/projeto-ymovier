@@ -3,6 +3,11 @@
     margin: 0;
     padding: 0;
 }
+
+:root{
+    --main-height: calc(100vh - 4rem);
+}
+
 .container {
     margin: 0 auto;
     width: 100%;
