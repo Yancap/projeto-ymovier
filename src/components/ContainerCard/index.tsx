@@ -13,6 +13,7 @@ export const ContainerCard = ({children}: Props) => {
   const leftArrow = useRef<HTMLDivElement>(null)
   
   function handleScrollLeft(event: any, action: string = "none"){
+    
     if (container.current) {
       if(container.current.scrollLeft === 0){
         if (leftArrow.current) {

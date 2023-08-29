@@ -16,13 +16,16 @@
 }
 
 .image {
-    
-    img{
+    img {
         height: 18rem;
         width: 100%;
-       object-fit: cover; 
+        object-fit: cover; 
+        @media (max-width: 500px){
+            width: 35vw;
+            min-height: 10rem;
+            height: 55vw;
+        }
     }
-     
     
 }
 .content {
@@ -49,11 +52,19 @@
         span:nth-child(1) {
             font-size: calc(.4rem + 0.2vw);
             color: rgb(106 106 106 / 0.8);
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 20ch;
         }
         span:nth-child(2) {
             color: rgb(106 106 106);
             font-size: calc(.5rem + 0.5vw);
             font-weight: 500;
         }
+    }
+
+    @media (max-width: 500px){
+        display: none;
     }
 }
