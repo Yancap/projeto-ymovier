@@ -1,6 +1,7 @@
 .card {
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     max-width: 13rem;
     border-radius: .25rem;
     overflow: hidden;
@@ -15,11 +16,14 @@
 }
 
 .image {
-    flex-basis: 15rem;
-    img {
-        height: 100%;
-        width: auto;
+    
+    img{
+        height: 18rem;
+        width: 100%;
+       object-fit: cover; 
     }
+     
+    
 }
 .content {
     background-color: #1E1E1E;

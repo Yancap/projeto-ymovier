@@ -11,7 +11,8 @@ interface Props {
 export const ContainerCard = ({children}: Props) => {
   const container = useRef<HTMLDivElement>(null)
   const leftArrow = useRef<HTMLDivElement>(null)
-  function handleScrollLeft(){
+  
+  function handleScrollLeft(event: any, action: string = "none"){
     if (container.current) {
       if(container.current.scrollLeft === 0){
         if (leftArrow.current) {
@@ -22,9 +23,12 @@ export const ContainerCard = ({children}: Props) => {
           leftArrow.current.style.display = 'flex'
         }
       }
-      container.current.scrollBy({
-        left: -0.5
-      })
+      if (action !== "no-scroll") {
+        container.current.scrollBy({
+          left: -25
+        })
+      }
+      
     }
   }
   function handleScrollRight(){
@@ -33,7 +37,7 @@ export const ContainerCard = ({children}: Props) => {
         leftArrow.current.style.display = 'flex'
       }
       container.current.scrollBy({
-          left: 0.5
+          left: 25
       })
     }
   }
@@ -51,16 +55,18 @@ export const ContainerCard = ({children}: Props) => {
   return (
     <div className={styles.container_main}>
         <div ref={leftArrow} className={styles.left_arrow}  onPointerDown={handleScrollLeft}>
-            <div className='p-[2vmin] bg-gray-600/50 rounded-full -ml-2 md:-ml-6 cursor-pointer hover:bg-gray-600/80'>
-               <Image src='/arrow.svg' alt='left' height='18' width='18' className='w-[3vmin] rotate-180'/> 
+            <div>
+               <Image src='/arrow.svg' alt='left' height='18' width='18' /> 
             </div>
         </div>
-        <div className={`container-card ${styles.scroll_card} z-10`} ref={container}>
+        <div className={`${styles.container_card}`} ref={container} onScroll={(event) => {
+          handleScrollLeft(event, "no-scroll")
+        }}>
            {children} 
         </div>
         <div className={styles.right_arrow} onPointerDown={handleScrollRight}>
-            <div className='p-[2vmin] bg-gray-600/50 rounded-full -mr-2 md:-mr-6 cursor-pointer hover:bg-gray-600/80'>
-               <Image src='/arrow.svg' alt='left' height='18' width='18' className='w-[3vmin]'/> 
+            <div>
+               <Image src='/arrow.svg' alt='left' height='18' width='18' /> 
             </div>
         </div>
     </div>

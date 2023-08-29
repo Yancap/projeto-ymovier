@@ -1,8 +1,8 @@
 import { Simplify } from '@prismicio/client/dist/types/value/types';
 import React from 'react'
-import { NewMoviesDocumentData } from '@/pages/catalog';
 import Image from 'next/image';
 import styles from './styles.module.scss'
+import { NewMoviesDocumentData } from '@/pages/catalog/catalog';
 
 interface CardProps{
   movie: Simplify<NewMoviesDocumentData>;
@@ -21,7 +21,7 @@ export const Card = ({movie, setModal, setDataModal}: CardProps) => {
       setDataModal(movie)
       }}>
         <figure className={styles.image}>
-            <img src={movie.poster.url} alt={movie.poster.alt} className='max-w-full h-auto'/>
+            <img src={movie.poster.url} alt={movie.poster.alt} />
         </figure>
         <article className={styles.content}>
           <div>
