@@ -1,2 +1,4 @@
 - [x] Reestilização do SignIn, dps Home
-- [] Reestilização da catalog
+- [x] continuar Reestilização da catalog
+- [] estilização do container card
+

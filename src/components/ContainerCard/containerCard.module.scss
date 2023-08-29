@@ -1,0 +1,42 @@
+.container_main {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.left_arrow, .right_arrow{
+    display: flex;
+    align-items: center;
+    user-select: none;
+    position: absolute;
+    z-index: 20;
+    height: 100%;
+    width: 6rem;
+
+}
+
+.left_arrow {
+    background: linear-gradient(to right, #232323 10%, rgba(35, 35, 35, 0.00) 100%);
+    
+}
+.right_arrow {
+    background: linear-gradient(to left,  #232323 10%, rgba(35, 35, 35, 0.00) 100%);
+    justify-content: flex-end;
+    right: 0px;
+}
+
+.scroll_card{
+    scroll-snap-type: x mandatory;
+}
+
+
+.scroll_card::-webkit-scrollbar {
+    height: 6px;
+    background: #1E1E1E;
+    border-radius: 1000px;
+}
+.scroll_card::-webkit-scrollbar-thumb {
+    background: #990100;
+    border-radius: 1000px;
+}

@@ -1,9 +1,10 @@
-import { NewMoviesDocumentData } from '@/pages/catalog'
 import { api } from '@/services/api'
 import Image from 'next/image'
 import React, { useRef, useState } from 'react'
 import { AllDocumentTypes } from '../../../prismicio-types'
 import { useRouter } from 'next/router'
+import styles from './search.module.scss'
+import { NewMoviesDocumentData } from '@/pages/catalog/catalog'
 
 
 export const Search = () => {
@@ -19,14 +20,13 @@ export const Search = () => {
   console.log(result);
   
   return (
-    <form className='flex w-full md:w-auto md:order-2 group'
-    onSubmit={(event) => {
-        event.preventDefault()
-        handleSearch()
-    }}
-    >
-        <input ref={input} type="text" placeholder='Pesquisar' className='search-input'/>
-        <button type="submit" className='search-button' >
+    <form className={styles.form}
+      onSubmit={(event) => {
+          event.preventDefault()
+          handleSearch()
+      }}>
+        <input ref={input} type="text" placeholder='Pesquisar' className={styles.input}/>
+        <button type="submit" className={styles.button} >
             <Image src='/search.svg' alt='search' height='16' width='16'/>
         </button>
     </form>

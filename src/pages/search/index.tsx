@@ -1,4 +1,4 @@
-import { ContainerCard } from '@/components/Catalog/ContainerCard'
+import { ContainerCard } from '@/components/ContainerCard'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { Card } from '../../components/Card'
