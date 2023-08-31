@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
+import styles from './modal.module.scss'
 import { Simplify } from '../../../prismicio-types';
-import { NewMoviesDocumentData } from '@/pages/catalog';
 import { styled } from 'styled-components';
 import { useSignatureContext } from '@/context/SignatureContext';
 import { signIn, useSession } from 'next-auth/react';
 import { getStripeJs } from '@/services/stripe-js';
 import { api } from '@/services/api';
 import { useRouter } from 'next/router';
+import { NewMoviesDocumentData } from '@/pages/catalog/catalog';
 
 interface ModalProps{
   movie: Simplify<NewMoviesDocumentData>;
@@ -57,7 +58,7 @@ export const Modal = ({movie, setModal}: ModalProps) => {
     
         <>
         {viewMovie ? 
-        <Section  className='section-modal md:pr-2'>
+        <Section className={'section-modal md:pr-2'}>
             <div className='h-screen w-screen flex gap-2 py-2 pl-4 pr-2 relative'>
               <div className='h-full w-full'dangerouslySetInnerHTML={{__html: movie.video.html as string}}/>
               <Image onClick={() => {setModal(modal => !modal); setViewMovie(false)}} 

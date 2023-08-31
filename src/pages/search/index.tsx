@@ -1,17 +1,14 @@
 import { ContainerCard } from '@/components/ContainerCard'
-import Image from 'next/image'
+import styles from './search.module.scss'
 import React, { useEffect, useState } from 'react'
 import { Card } from '../../components/Card'
 import { Modal } from '@/components/Modal'
 import { GetServerSideProps, GetStaticPaths} from 'next'
-import { getPrismicClient } from '@/services/prismic'
 import { Simplify } from '@prismicio/client/dist/types/value/types'
-import { MoviesDocumentData } from '../../../prismicio-types'
 import { Search } from '@/components/Search'
-import { api } from '@/services/api'
 import searchEngine from '@/services/search'
-import { NewMoviesDocumentData } from '../catalog'
 import { useRouter } from 'next/router'
+import { NewMoviesDocumentData } from '../catalog/catalog'
 
 
 interface SearchProps{
@@ -24,27 +21,26 @@ export default function SearchPage({movies}: SearchProps) {
   const [ dataModal, setDataModal ] = useState<NewMoviesDocumentData | null>(null)
   const {query} = useRouter()
   const result = query.query
-  console.log(query);
   
   return (
-    <main className='min-h-[calc(100vh-5rem)] '>
-      <section className='bg-catalog bg-cover bg-no-repeat'>
-        <div className='bg-gradient-to-t from-gray-800 via-gray-800/70 to-gray-900 backdrop-blur-sm'>
+    <main className={styles.main}>
+      <section>
+        <div>
           <div className='container'>
-            <section className="py-16 lg:py-24 mx-auto text-center">
-              <h1 className='text-white font-bold text-5xl lg:text-7xl'>
+            <section className={styles.section_header}>
+              <h1 >
                 Resultados
               </h1>
             </section>
-            <section className="relative container pb-20 md:pb-40 ">
-              <div className=' z-10 sm:container w-[calc(100%-1rem)]'>
-                <div className='flex gap-4 flex-col md:flex-row pb-2 justify-between border-b-light-gray-500 border-b-2'>
-                  <h2 className='text-white font-medium text-2xl order-1'>
+            <section className={styles.section_floating}>
+              <div>
+                <div className={styles.heading}>
+                  <h2>
                     {result}
                   </h2>
                   <Search />
                 </div>
-                <div className={`container-results z-10`} >
+                <div className={styles.container_results} >
                   {movies && movies.map(movie => (
                     <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
                   ))}

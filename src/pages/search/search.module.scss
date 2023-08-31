@@ -13,8 +13,7 @@
 
 .section {
     background: #232323;
-    padding:4rem 0;
-    width: 100%;
+    padding:4rem;
 }
 .section_header {
     padding: 4rem 0;
@@ -68,7 +67,7 @@
         @media (min-width: 768px) {
             flex-direction: row;
         }
-        h1 {
+        h2 {
             order: 1;
         }
     }
@@ -84,5 +83,17 @@
         font-weight: 500;
         font-size: 1.5rem;
         line-height: 2rem;
+    }
+}
+
+.container_results{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: .75rem 0;
+    justify-content: space-evenly;
+    width: 100%;
+    @media (min-width: 664px) {
+        justify-content: space-between;
     }
 }

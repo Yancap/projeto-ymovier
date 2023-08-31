@@ -27,7 +27,7 @@ export default function Catalog({movies}: CatalogProps) {
             <section className={styles.section_floating}>
               <div>
                 <div className={styles.heading}>
-                  <h2 className='text-white font-medium text-2xl order-1'>
+                  <h2 >
                     Principais Filmes
                   </h2>
                   <Search />
@@ -45,7 +45,7 @@ export default function Catalog({movies}: CatalogProps) {
       <section className={styles.section}>
         <div className='container'>
           <div className={styles.heading}>
-            <h2 className='text-white font-medium text-2xl'>
+            <h2>
               Filmes de Ação
             </h2>
           </div>
@@ -60,7 +60,7 @@ export default function Catalog({movies}: CatalogProps) {
       <section className={styles.section}>
         <div className='container'>
           <div className={styles.heading}>
-            <h2 className='text-white font-medium text-2xl'>
+            <h2 >
               Filmes de Suspense
             </h2>
           </div>

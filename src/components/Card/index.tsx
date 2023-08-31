@@ -1,6 +1,5 @@
 import { Simplify } from '@prismicio/client/dist/types/value/types';
 import React from 'react'
-import Image from 'next/image';
 import styles from './styles.module.scss'
 import { NewMoviesDocumentData } from '@/pages/catalog/catalog';
 

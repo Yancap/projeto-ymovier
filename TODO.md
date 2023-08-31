@@ -1,4 +1,6 @@
 - [x] Reestilização do SignIn, dps Home
 - [x] continuar Reestilização da catalog
-- [] estilização do container card
-
+- [x] estilização do container card
+- [x] estilização da search
+- [] estilização do modal
+- [] verificar responsividade

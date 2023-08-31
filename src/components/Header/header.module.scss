@@ -31,7 +31,10 @@
 
 .div_link {
     height: 100%;
-    padding: 0.75rem 0.5rem;
+    padding: 0.75rem 0.75rem;
+    &:hover{
+        border-top: 2px solid #990100;
+    }
 }
 .div_link_active {
     border-top: 2px solid #990100;
@@ -75,7 +78,11 @@
     }
 
     .div_link {
-        padding: 1.5rem 0;
+        padding: 1.5rem .5rem;
+        &:hover{
+            border-top: none;
+            border-bottom: 2px solid #990100;
+        }
     }
 
     .div_link_active {
