@@ -35,7 +35,7 @@ export const Card = ({movie, setModal, setDataModal}: CardProps) => {
               <span>
                 {movie.gender}
               </span>
-              <span className='text-gray-500 font-medium text-[calc(.5rem+0.5vw)]'>
+              <span>
                 {movie.review}/100
               </span>
           </footer>

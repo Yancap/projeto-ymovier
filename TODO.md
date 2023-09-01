@@ -2,5 +2,6 @@
 - [x] continuar Reestilização da catalog
 - [x] estilização do container card
 - [x] estilização da search
-- [] estilização do modal
+- [x] estilização do modal
 - [] verificar responsividade
+- [] desinstalar tailwind
