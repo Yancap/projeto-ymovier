@@ -58,73 +58,72 @@ export const Modal = ({movie, setModal}: ModalProps) => {
     
         <>
         {viewMovie ? 
-        <Section className={'section-modal md:pr-2'}>
-            <div className='h-screen w-screen flex gap-2 py-2 pl-4 pr-2 relative'>
-              <div className='h-full w-full'dangerouslySetInnerHTML={{__html: movie.video.html as string}}/>
-              <Image onClick={() => {setModal(modal => !modal); setViewMovie(false)}} 
-              src='/close.svg' alt="X" height="16" width="16" className='cursor-pointer self-start'/>
-            </div>
+        <Section className={`${styles.section_modal}`}>
+            <Container color={movie.main_color as string} className={styles.container_film}>
+              <Image src='/close.svg' alt="X" height="20" width="20" onClick={() => {
+                setModal(modal => !modal) 
+                setViewMovie(false)}} 
+              />
+              <div className={styles.film} dangerouslySetInnerHTML={{__html: movie.video.html as string}}/>
+            </Container>
           </Section>
             :
-            <Section data-image={movie.background.url} className='section-modal lg:pr-10 lg:pl-5'>
-              <Container color={movie.main_color as string}
-                className='bg-opacity-70 w-screen h-screen lg:w-full lg:h-auto rounded py-2 px-8'>
-                <header className='flex cursor-pointer justify-end pt-2' onClick={() => {setModal(modal => !modal); setViewMovie(false)}}>
+            <Section data-image={movie.background.url} className={`${styles.section_modal} `}>
+              <Container color={movie.main_color as string} className={styles.container}>
+                <header onClick={() => {setModal(modal => !modal); setViewMovie(false)}}>
                   <Image src='/close.svg' alt="X" height="16" width="16" />
                 </header>
-                <div className='flex h-[90vh] max-w-[1124px] gap-2 lg:gap-6 py-4 flex-wrap md:flex-nowrap'>
-                    <figure className='hidden md:block overflow-hidden  w-4/12 rounded'>
-                      <img src={movie.poster.url} alt={movie.poster.alt} className='w-full h-auto'/>
+                <div>
+                    <figure className={styles.post}>
+                      <img src={movie.poster.url} alt={movie.poster.alt}/>
                     </figure>
-                    <article className='flex flex-col gap-8 py-4 md:w-8/12 max-h-full'>
-                        <div className='order-1 flex flex-col gap-2'>
-                          <div className='flex gap-2 items-end'>
-                            <h2 className='text-3xl  text-white font-bold '>
+                    <article className={styles.container_info}>
+                        <header>
+                          <div>
+                            <h2>
                             {movie.title}
                             </h2>
-                            <span className='hidden lg:inline text-xl  text-gray-500'>
+                            <span >
                               ({movie.year})
                             </span>
                           </div>
-                          <div className='flex gap-2'>
-                            <span className='text-gray-300 text-md  rounded border px-[6px]'>
+                          <div>
+                            <span>
                               {movie.parental_rating}
                             </span>
                             <Image src='/star.svg' alt='star' height='12' width='12'/>
-                            <span className='text-gray-300 text-md '>
+                            <span>
                               {movie.gender}
                             </span>
                             <Image src='/star.svg' alt='star' height='12' width='12'/>
-                            <span className='text-gray-500 text-md '>
+                            <span >
                               {movie.runtime}
                             </span>
                           </div>
-                        </div>
-                        <div className='hidden lg:order-2 lg:relative lg:grid place-items-center w-max h-max' >
+                        </header>
+                        <div className={styles.container_review} >
                           <Image src='/star.svg' alt='star' width='58' height='58'/>
-                          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-1 font-bold text-base">
+                          <span>
                             {movie.review}
                           </span>
                         </div>
-                        <div className='order-4 lg:order-3 '>
-                          <h3 className='text-white font-medium text-2xl mb-2'>
+                        <div className={styles.container_plot}>
+                          <h3>
                             Sinopse
                           </h3>
-                          <p className='text-gray-300 text-md'>
+                          <p>
                             {movie.plot}
                           </p>
                         </div>
-                        <div className='order-5 lg:order-4 justify-between flex gap-14 lg:justify-start'>
+                        <div className={styles.container_production}>
                           {movie.production.map(person => (
                             <div>
-                              <h4 className='font-bold text-xl text-white'>{person.name}</h4>
-                              <span className='font-light text-base text-gray-300'>{person.role}</span>
+                              <h4>{person.name}</h4>
+                              <span>{person.role}</span>
                             </div>
                           ))}
                         </div>
-                        <button onClick={() => signature === "active" ? setViewMovie(true) : router.push("/")}
-                          className='order-2 lg:order-5 justify-center flex gap-3 items-center rounded-md bg-gray-300 py-2 px-6 transition-all font-bold text-xl text-gray-800 lg:self-start hover:bg-gray-400'
-                        >
+                        <button className={styles.btn} onClick={() => signature === "active" ? setViewMovie(true) : router.push("/")}>
                           <Image src='/play.svg' alt='play' width='18' height='20' className='mt-px'/>
                           Assistir
                         </button>
