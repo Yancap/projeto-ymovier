@@ -3,5 +3,6 @@
 - [x] estilização do container card
 - [x] estilização da search
 - [x] estilização do modal
-- [] verificar responsividade
-- [] desinstalar tailwind
+- [x] verificar responsividade
+- [x] desinstalar tailwind
+- [] adicionar conteudo
