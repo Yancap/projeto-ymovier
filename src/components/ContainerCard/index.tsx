@@ -33,7 +33,7 @@ export const ContainerCard = ({children}: Props) => {
     }
   }
   function handleScrollRight(){
-    if (container.current) {
+    if (container.current && window.screen.width > 480) {
       if (leftArrow.current) {
         leftArrow.current.style.display = 'flex'
       }
@@ -60,8 +60,8 @@ export const ContainerCard = ({children}: Props) => {
                <Image src='/arrow.svg' alt='left' height='18' width='18' /> 
             </div>
         </div>
-        <div className={`${styles.container_card}`} ref={container} onScroll={(event) => {
-          handleScrollLeft(event, "no-scroll")
+        <div className={`${styles.container_card}`} ref={container} onScroll={(event) => {          
+          if(window.innerWidth > 480) handleScrollLeft(event, "no-scroll")
         }}>
            {children} 
         </div>

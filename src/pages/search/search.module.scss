@@ -1,5 +1,7 @@
 .main {
     min-height: var(--main-height);
+    background: #232323;
+    padding-bottom: 4rem;
     > section:nth-child(1) {
         background-image: url('/background-catalog.png');
         background-size: cover;

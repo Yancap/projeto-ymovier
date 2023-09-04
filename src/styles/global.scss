@@ -3,6 +3,11 @@
     margin: 0;
     padding: 0;
 }
+html {
+    @media screen and (max-width: 500px) {
+        font-size: 14px;
+    }
+}
 
 :root{
     --main-height: calc(100vh - 4rem);
@@ -12,9 +17,8 @@
     margin: 0 auto;
     width: 100%;
     padding: 0 1rem;
-    max-width: 28rem;
     @media (min-width: 500px) {
-        padding: 0 0;
+        padding: 0 1rem;
     }
     @media (min-width: 640px) {
         max-width: 32rem;

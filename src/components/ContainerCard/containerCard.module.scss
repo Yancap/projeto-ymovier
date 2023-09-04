@@ -29,6 +29,10 @@
     img{
         width: 3vmin;
     }
+
+    @media (max-width: 480px) {
+        display: none;
+    }
 }
 
 .left_arrow {
@@ -73,6 +77,10 @@
     height: 6px;
     background: #1E1E1E;
     border-radius: 1000px;
+
+    @media (max-width: 480px) {
+        height: 4px;
+    } 
 }
 .container_card::-webkit-scrollbar-thumb {
     background: #990100;
