@@ -89,7 +89,7 @@ export const Modal = ({movie, setModal}: ModalProps) => {
                           </div>
                           <div>
                             <span>
-                              {movie.parental_rating}
+                              {movie.parental_rating === 0 ? "Livre" : movie.parental_rating}
                             </span>
                             <Image src='/star.svg' alt='star' height='12' width='12'/>
                             <span>

@@ -128,11 +128,13 @@
         }
 
         div:nth-child(2){
-            border: 1px solid #AEAEAE;
+            border: 1px solid #ffffff;
+            background: #232323;
             width: fit-content;
             border-radius: 0.25rem;
+            mix-blend-mode: overlay;
             span {
-                color: #AEAEAE;
+                color: #ffffff;
                 padding: 0 6px;
             }
         }

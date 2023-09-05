@@ -61,6 +61,21 @@ export default function Catalog({movies}: CatalogProps) {
         <div className='container'>
           <div className={styles.heading}>
             <h2 >
+              Filmes de Aventura
+            </h2>
+          </div>
+          <ContainerCard>
+            {movies && movies.filter(movie => movie.gender.includes("Aventura"))
+            .map(movie => (
+              <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+            ))}
+          </ContainerCard>
+        </div>
+      </section>
+      <section className={styles.section}>
+        <div className='container'>
+          <div className={styles.heading}>
+            <h2 >
               Filmes de Suspense
             </h2>
           </div>
