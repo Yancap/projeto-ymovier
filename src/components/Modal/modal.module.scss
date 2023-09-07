@@ -181,7 +181,8 @@
         margin-bottom: 0.5rem;
     }
     p{
-        color: rgb(209 213 219);
+        color: rgba(253, 253, 253, 0.795);
+
     }
 }
 
@@ -224,7 +225,7 @@
     font-size: 1.25rem;
     line-height: 1.75rem;
     color: #232323;
-
+    mix-blend-mode: overlay;
     transition: all .15s;
     &:hover {
         background-color: rgb(156 163 175 );
