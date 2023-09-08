@@ -26,7 +26,7 @@ export const ContainerCard = ({children}: Props) => {
       }
       if (action !== "no-scroll") {
         container.current.scrollBy({
-          left: -25
+          left: -150
         })
       }
       
@@ -38,7 +38,7 @@ export const ContainerCard = ({children}: Props) => {
         leftArrow.current.style.display = 'flex'
       }
       container.current.scrollBy({
-          left: 25
+          left: 150
       })
     }
   }
