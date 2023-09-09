@@ -2,7 +2,7 @@ import { getPrismicClient } from "@/services/prismic";
 import { NextApiRequest, NextApiResponse } from "next";
 import { AllDocumentTypes } from "../../../../prismicio-types";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler (req: NextApiRequest, res: NextApiResponse) {
     const { search } = req.body
     const trashWord = `a, à, agora, ainda, algum, alguma, 
     algumas, alguns, ampla, amplas, amplo, amplos, ante, antes, 

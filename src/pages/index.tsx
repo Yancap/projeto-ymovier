@@ -2,7 +2,6 @@ import { SignatureButton } from '@/components/SignatureButton'
 import { useSignatureContext } from '@/context/SignatureContext'
 import { api } from '@/services/api'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from './index.module.scss'
 
 import { useEffect } from 'react'

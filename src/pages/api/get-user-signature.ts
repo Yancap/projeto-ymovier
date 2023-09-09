@@ -7,8 +7,7 @@ interface SessionSlug extends Session {
     activeSignature: 'active' | 'canceled' | null;
 }
 
-export default async (request: NextApiRequest, response: NextApiResponse) => {
-    
+export default async function handler(request: NextApiRequest, response: NextApiResponse) {
     
     if(request.method === "GET"){
         const session = await getServerSession(request, response, authOptions)

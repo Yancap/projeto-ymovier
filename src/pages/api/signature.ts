@@ -14,7 +14,7 @@ interface User {
     }
 }
 
-export default async (request: NextApiRequest, response: NextApiResponse) => {
+export default async function handler(request: NextApiRequest, response: NextApiResponse){
     
     
     if(request.method === "POST") {

@@ -117,7 +117,7 @@ export const Modal = ({movie, setModal}: ModalProps) => {
                         </div>
                         <div className={styles.container_production}>
                           {movie.production.map(person => (
-                            <div>
+                            <div key={person.name}>
                               <h4>{person.name}</h4>
                               <span>{person.role}</span>
                             </div>
