@@ -5,4 +5,5 @@
 - [x] estilização do modal
 - [x] verificar responsividade
 - [x] desinstalar tailwind
-- [] adicionar conteudo
+- [x] adicionar conteudo
+- [] resolver o problema da subscription do usuario

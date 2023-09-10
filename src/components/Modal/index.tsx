@@ -36,7 +36,6 @@ export const Modal = ({movie, setModal}: ModalProps) => {
   const [ viewMovie, setViewMovie ] = useState(false)
   const { data: session } = useSession()
   const router = useRouter();
-  console.log(signature);
   
   async function handleSignature(){
     if (!session) {

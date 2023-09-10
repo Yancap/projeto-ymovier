@@ -7,103 +7,120 @@ import { GetServerSideProps} from 'next'
 import { getPrismicClient } from '@/services/prismic'
 import { Search } from '@/components/Search'
 import styles from './catalog.module.scss'
-import {CatalogProps, NewMoviesDocumentData, } from './catalog'
+import {CatalogProps, NewMoviesDocumentData, SignatureResponse, } from './catalog'
+import Head from 'next/head'
+import { api } from '@/services/api'
+import { useSignatureContext } from '@/context/SignatureContext'
 
 
 export default function Catalog({movies}: CatalogProps) {
   const [ modal, setModal ] = useState(false)
   const [ dataModal, setDataModal ] = useState<NewMoviesDocumentData | null>(null)
-  
+  const { setSignature } = useSignatureContext();
+  useEffect(() => {
+    api.get<SignatureResponse>("/get-user-signature")
+    .then((response) => {
+      setSignature<string | null>(response.data.signature)
+    })
+  }, [])
   return (
-    <main className={styles.main}>
-      <section>
-        <div>
-          <div className='container'>
-            <section className={styles.section_header}>
-              <h1>
-                Catálogo
-              </h1>
-            </section>
-            <section className={styles.section_floating}>
-              <div>
-                <div className={styles.heading}>
-                  <h2 >
-                    Principais Filmes
-                  </h2>
-                  <Search />
+    <>
+      <Head>
+        <title>Catalogo | yMovier</title>
+        <meta name="description" content="Site criado por Yan Gabriel Ferreira" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/icon.svg" />
+      </Head>
+      <main className={styles.main}>
+        <section>
+          <div>
+            <div className='container'>
+              <section className={styles.section_header}>
+                <h1>
+                  Catálogo
+                </h1>
+              </section>
+              <section className={styles.section_floating}>
+                <div>
+                  <div className={styles.heading}>
+                    <h2 >
+                      Principais Filmes
+                    </h2>
+                    <Search />
+                  </div>
+                  <ContainerCard>
+                    {movies && movies.map(movie => (
+                      <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+                    ))}
+                  </ContainerCard>
                 </div>
-                <ContainerCard>
-                  {movies && movies.map(movie => (
-                    <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
-                  ))}
-                </ContainerCard>
-              </div>
-            </section>
+              </section>
+            </div>
           </div>
-        </div>
-      </section>
-      <section className={styles.section}>
-        <div className='container'>
-          <div className={styles.heading}>
-            <h2>
-              Filmes de Ação
-            </h2>
+        </section>
+        <section className={styles.section}>
+          <div className='container'>
+            <div className={styles.heading}>
+              <h2>
+                Filmes de Ação
+              </h2>
+            </div>
+            <ContainerCard>
+              {movies && movies.filter(movie => movie.gender.includes("Ação"))
+              .map(movie => (
+                <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+              ))}
+            </ContainerCard>
           </div>
-          <ContainerCard>
-            {movies && movies.filter(movie => movie.gender.includes("Ação"))
-            .map(movie => (
-              <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
-            ))}
-          </ContainerCard>
-        </div>
-      </section>
-      <section className={styles.section}>
-        <div className='container'>
-          <div className={styles.heading}>
-            <h2 >
-              Filmes de Aventura
-            </h2>
+        </section>
+        <section className={styles.section}>
+          <div className='container'>
+            <div className={styles.heading}>
+              <h2 >
+                Filmes de Aventura
+              </h2>
+            </div>
+            <ContainerCard>
+              {movies && movies.filter(movie => movie.gender.includes("Aventura"))
+              .map(movie => (
+                <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+              ))}
+            </ContainerCard>
           </div>
-          <ContainerCard>
-            {movies && movies.filter(movie => movie.gender.includes("Aventura"))
-            .map(movie => (
-              <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
-            ))}
-          </ContainerCard>
-        </div>
-      </section>
-      <section className={styles.section}>
-        <div className='container'>
-          <div className={styles.heading}>
-            <h2 >
-              Filmes de Terror
-            </h2>
+        </section>
+        <section className={styles.section}>
+          <div className='container'>
+            <div className={styles.heading}>
+              <h2 >
+                Filmes de Terror
+              </h2>
+            </div>
+            <ContainerCard>
+              {movies && movies.filter(movie => movie.gender.includes("Terror"))
+              .map(movie => (
+                <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+              ))}
+            </ContainerCard>
           </div>
-          <ContainerCard>
-            {movies && movies.filter(movie => movie.gender.includes("Terror"))
-            .map(movie => (
-              <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
-            ))}
-          </ContainerCard>
-        </div>
-      </section>
-      <section className={styles.section}>
-        <div className='container'>
-          <div className={styles.heading}>
-            <h2 >
-              Filmes de Suspense
-            </h2>
+        </section>
+        <section className={styles.section}>
+          <div className='container'>
+            <div className={styles.heading}>
+              <h2 >
+                Filmes de Suspense
+              </h2>
+            </div>
+            <ContainerCard>
+              {movies && movies.filter(movie => movie.gender.includes("Suspense"))
+              .map(movie => (
+                <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
+              ))}
+            </ContainerCard>
           </div>
-          <ContainerCard>
-            {movies && movies.filter(movie => movie.gender.includes("Suspense"))
-            .map(movie => (
-              <Card key={movie.title} movie={movie} setModal={setModal} setDataModal={setDataModal}/>
-            ))}
-          </ContainerCard>
-        </div>
-      </section>
-      {(modal && dataModal) && <Modal movie={dataModal} setModal={setModal}/> }
-    </main>
+        </section>
+        {(modal && dataModal) && <Modal movie={dataModal} setModal={setModal}/> }
+      </main>
+    </>
   )
 }
 
